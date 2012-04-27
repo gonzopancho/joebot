@@ -51,7 +51,9 @@ public class Flywheel extends Subsystem {
      * This way any shot made from within this tolerance will go the correct distance.
      */
     public static double rpmTolerance = 75;
-    
+
+    public static double FRONT_BACK_RATIO = 2.0;
+
     /**
      * Will be set by FlywheelRun when the speed has settled to the setpoint.
      */
@@ -155,8 +157,8 @@ public class Flywheel extends Subsystem {
 
     public void setFlywheelSpeeds(double upperRPM, double lowerRPM) {
         upperRoller.setRPM(upperRPM);
-        lowerRoller.setRPM(lowerRPM);
-        lowerSetpoint = lowerRPM;
+        lowerRoller.setRPM(lowerRPM * FRONT_BACK_RATIO);
+        lowerSetpoint = lowerRPM * FRONT_BACK_RATIO;
         upperSetpoint = upperRPM;
     }
 

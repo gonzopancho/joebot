@@ -12,11 +12,13 @@ import edu.stuy.commands.CommandBase;
 import edu.stuy.commands.TusksRetract;
 import edu.stuy.subsystems.Conveyor;
 import edu.stuy.subsystems.Flywheel;
+import edu.wpi.first.wpilibj.DriverStation;
 import edu.wpi.first.wpilibj.IterativeRobot;
 import edu.wpi.first.wpilibj.Timer;
 import edu.wpi.first.wpilibj.camera.AxisCamera;
 import edu.wpi.first.wpilibj.command.Command;
 import edu.wpi.first.wpilibj.command.Scheduler;
+import edu.wpi.first.wpilibj.networktables.NetworkTableKeyNotDefined;
 import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
 
 /**
@@ -100,6 +102,11 @@ public class JoeBot extends IterativeRobot {
         CommandBase.oi.updateLights();
         updateSmartDashboard();
 
+        try {
+            Flywheel.FRONT_BACK_RATIO = SmartDashboard.getDouble("Flywheel front back ratio");
+        } catch (NetworkTableKeyNotDefined e) {
+            SmartDashboard.putDouble("Flywheel front back ratio", Flywheel.FRONT_BACK_RATIO);
+        }
 
         Conveyor conv = CommandBase.conveyor;
         // Has the ball settled at the top?
