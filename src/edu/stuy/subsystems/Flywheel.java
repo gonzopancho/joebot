@@ -52,7 +52,7 @@ public class Flywheel extends Subsystem {
      */
     public static double rpmTolerance = 75;
 
-    public static double FRONT_BACK_RATIO = 2.0;
+    public static double FRONT_BACK_RATIO = 0.75;
 
     /**
      * Will be set by FlywheelRun when the speed has settled to the setpoint.
@@ -122,7 +122,7 @@ public class Flywheel extends Subsystem {
         speedsTopHoop[CLOSE_KEY_INDEX]            = 1660;
         speedsTopHoop[KEY_SLANT_INDEX]            = 1560; //TODO: Fix this value through testing
         speedsTopHoop[KEY_MIDDLE_HOOP_INDEX]      = 1425; //TODO: Fix value through testing
-        speedsTopHoop[MAX_DIST]                   = 694694; // TODO: FIx this value through testing
+        speedsTopHoop[MAX_DIST]                   = 3500; // TODO: FIx this value through testing
         speedsTopHoop[FAR_KEY_INDEX]              = 2000; //TODO: Test This
 
         // fill these in at competition if we have time
@@ -156,9 +156,13 @@ public class Flywheel extends Subsystem {
     }
 
     public void setFlywheelSpeeds(double upperRPM, double lowerRPM) {
+        double mult;
         upperRoller.setRPM(upperRPM);
-        lowerRoller.setRPM(lowerRPM * FRONT_BACK_RATIO);
-        lowerSetpoint = lowerRPM * FRONT_BACK_RATIO;
+        
+        //Only apply topspin if we are clearing balls
+        mult = (upperRPM > 3000) ? FRONT_BACK_RATIO : 1;
+        lowerRoller.setRPM(lowerRPM * mult);
+        lowerSetpoint = lowerRPM * mult;
         upperSetpoint = upperRPM;
     }
 
