@@ -157,12 +157,19 @@ public class Flywheel extends Subsystem {
 
     public void setFlywheelSpeeds(double upperRPM, double lowerRPM) {
         double mult;
-        upperRoller.setRPM(upperRPM);
-        
         //Only apply topspin if we are clearing balls
-        mult = (upperRPM > 3000) ? FRONT_BACK_RATIO : 1;
-        lowerRoller.setRPM(lowerRPM * mult);
-        lowerSetpoint = lowerRPM * mult;
+        //mult = (upperRPM > 3000) ? FRONT_BACK_RATIO : 1;
+        
+        if (Math.abs(upperRPM) > 3000) {
+            lowerRoller.setRPM(lowerRPM * FRONT_BACK_RATIO);
+            lowerSetpoint = lowerRPM * FRONT_BACK_RATIO;
+        }
+        else {
+            lowerRoller.setRPM((lowerRPM));
+            lowerSetpoint = lowerRPM;
+        }
+
+        upperRoller.setRPM(upperRPM);
         upperSetpoint = upperRPM;
     }
 
