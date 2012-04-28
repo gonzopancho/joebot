@@ -122,7 +122,7 @@ public class Flywheel extends Subsystem {
         speedsTopHoop[CLOSE_KEY_INDEX]            = 1660;
         speedsTopHoop[KEY_SLANT_INDEX]            = 1560; //TODO: Fix this value through testing
         speedsTopHoop[KEY_MIDDLE_HOOP_INDEX]      = 1425; //TODO: Fix value through testing
-        speedsTopHoop[MAX_DIST]                   = 3500; // TODO: FIx this value through testing
+        speedsTopHoop[MAX_DIST]                   = 2000; // TODO: FIx this value through testing
         speedsTopHoop[FAR_KEY_INDEX]              = 2000; //TODO: Test This
 
         // fill these in at competition if we have time
@@ -159,8 +159,8 @@ public class Flywheel extends Subsystem {
         double mult;
         //Only apply topspin if we are clearing balls
         //mult = (upperRPM > 3000) ? FRONT_BACK_RATIO : 1;
-        
-        if (Math.abs(upperRPM) > 3000) {
+        SmartDashboard.putDouble("Upper RPM setpoint", upperRPM);
+        if (Math.abs(upperRPM) >= distances[MAX_DIST]) {
             lowerRoller.setRPM(lowerRPM * FRONT_BACK_RATIO);
             lowerSetpoint = lowerRPM * FRONT_BACK_RATIO;
         }
