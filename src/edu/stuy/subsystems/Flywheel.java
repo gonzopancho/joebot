@@ -159,12 +159,10 @@ public class Flywheel extends Subsystem {
         double mult;
         //Only apply topspin if we are clearing balls
         //mult = (upperRPM > 3000) ? FRONT_BACK_RATIO : 1;
-        SmartDashboard.putDouble("Upper RPM setpoint", upperRPM);
-        if (Math.abs(upperRPM) >= distances[MAX_DIST]) {
+        if (Math.abs(upperRPM) >= speedsTopHoop[MAX_DIST]) {
             lowerRoller.setRPM(lowerRPM * FRONT_BACK_RATIO);
             lowerSetpoint = lowerRPM * FRONT_BACK_RATIO;
-        }
-        else {
+        } else {
             lowerRoller.setRPM((lowerRPM));
             lowerSetpoint = lowerRPM;
         }
