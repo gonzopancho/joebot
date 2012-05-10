@@ -23,6 +23,7 @@ public class Drivetrain extends Subsystem {
     Solenoid gearShiftLow;
     Solenoid gearShiftHigh;
     Gyro gyro;
+    PIDController controller;
 
     public Compressor compressor;
 
@@ -73,4 +74,9 @@ public class Drivetrain extends Subsystem {
     public boolean getGear() {
         return gearShiftHigh.get();
     }
+    
+    public void setAngle(double angle) {
+        
+    }
+    
 }
