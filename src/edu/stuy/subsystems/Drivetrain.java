@@ -22,6 +22,7 @@ public class Drivetrain extends Subsystem {
     
     Solenoid gearShiftLow;
     Solenoid gearShiftHigh;
+    Gyro gyro;
 
     public Compressor compressor;
 
@@ -34,7 +35,7 @@ public class Drivetrain extends Subsystem {
        // In "2nd" cRio slot, or 4th physical
        gearShiftLow = new Solenoid(2, RobotMap.GEAR_SHIFT_LOW); 
        gearShiftHigh = new Solenoid(2, RobotMap.GEAR_SHIFT_HIGH);
-       
+       gyro = new Gyro(RobotMap.GYRO_CHANNEL);
        
        
         compressor = new Compressor(RobotMap.PRESSURE_SWITCH_CHANNEL, RobotMap.COMPRESSOR_RELAY_CHANNEL);
