@@ -93,6 +93,7 @@ public class OI {
         }
 
         if (!Devmode.DEV_MODE) {
+            new JoystickButton(leftStick, 8).whenPressed(new Rotate());
             new JoystickButton(leftStick, 1).whenPressed(new DrivetrainSetGear(false));
             new JoystickButton(leftStick, 2).whenPressed(new DrivetrainSetGear(true));
             new JoystickButton(rightStick, 1).whenPressed(new TusksExtend());

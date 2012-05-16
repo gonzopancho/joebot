@@ -11,7 +11,7 @@ import edu.stuy.util.VictorRobotDrive;
 import edu.wpi.first.wpilibj.*;
 import edu.wpi.first.wpilibj.command.Command;
 import edu.wpi.first.wpilibj.command.Subsystem;
-import edu.wpi.first.wpilibj.smartdashboard.SendablePIDController;
+import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
 
 /**
  *
@@ -24,6 +24,7 @@ public class Drivetrain extends Subsystem {
     Solenoid gearShiftHigh;
     Gyro gyro;
     PIDController controller;
+    double p,i,d,angle;
 
     public Compressor compressor;
 
@@ -41,6 +42,21 @@ public class Drivetrain extends Subsystem {
        
         compressor = new Compressor(RobotMap.PRESSURE_SWITCH_CHANNEL, RobotMap.COMPRESSOR_RELAY_CHANNEL);
         compressor.start();
+
+        SmartDashboard.putDouble("Rotate P", p);
+        SmartDashboard.putDouble("Rotate I", i);
+        SmartDashboard.putDouble("Rotate D", d);
+        SmartDashboard.putDouble("Rotate angle", angle);
+
+        controller = new PIDController(p,i,d,gyro,new PIDOutput(){
+            public void pidWrite(double output){
+                drive.arcadeDrive(0, output);
+            }
+        },0.005);
+        controller.setInputRange(-360.0, 360.0);
+        controller.setTolerance(1/90. *100);
+        controller.disable();
+
     }
 
 
@@ -75,8 +91,11 @@ public class Drivetrain extends Subsystem {
         return gearShiftHigh.get();
     }
     
-    public void setAngle(double angle) {
-        
+    public boolean setAngle() {
+        controller.setPID(p, i, d);
+        controller.enable();
+        controller.setSetpoint(angle);
+        return controller.onTarget();
     }
     
 }
