@@ -23,7 +23,7 @@ public class Drivetrain extends Subsystem {
     Solenoid gearShiftLow;
     Solenoid gearShiftHigh;
     Gyro gyro;
-    PIDController controller;
+    edu.stuy.util.PIDController controller;
 
     public Compressor compressor;
 
@@ -36,6 +36,7 @@ public class Drivetrain extends Subsystem {
        // In "2nd" cRio slot, or 4th physical
        gearShiftLow = new Solenoid(2, RobotMap.GEAR_SHIFT_LOW); 
        gearShiftHigh = new Solenoid(2, RobotMap.GEAR_SHIFT_HIGH);
+       
        gyro = new Gyro(RobotMap.GYRO_CHANNEL);
        
        
@@ -75,8 +76,9 @@ public class Drivetrain extends Subsystem {
         return gearShiftHigh.get();
     }
     
-    public void setAngle(double angle) {
+    public void align(double angle) {
         
+        controller.setSetpoint(angle);
     }
     
 }
