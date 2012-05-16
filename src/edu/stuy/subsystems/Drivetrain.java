@@ -37,6 +37,7 @@ public class Drivetrain extends Subsystem {
        // In "2nd" cRio slot, or 4th physical
        gearShiftLow = new Solenoid(2, RobotMap.GEAR_SHIFT_LOW); 
        gearShiftHigh = new Solenoid(2, RobotMap.GEAR_SHIFT_HIGH);
+       
        gyro = new Gyro(RobotMap.GYRO_CHANNEL);
        
        
@@ -96,6 +97,5 @@ public class Drivetrain extends Subsystem {
         controller.enable();
         controller.setSetpoint(angle);
         return controller.onTarget();
-    }
-    
+    }    
 }
