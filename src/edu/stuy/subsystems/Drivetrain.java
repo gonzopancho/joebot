@@ -44,10 +44,10 @@ public class Drivetrain extends Subsystem {
         compressor = new Compressor(RobotMap.PRESSURE_SWITCH_CHANNEL, RobotMap.COMPRESSOR_RELAY_CHANNEL);
         compressor.start();
 
-        SmartDashboard.putDouble("Rotate P", p);
-        SmartDashboard.putDouble("Rotate I", i);
-        SmartDashboard.putDouble("Rotate D", d);
-        SmartDashboard.putDouble("Rotate angle", angle);
+        SmartDashboard.getDouble("Rotate P", p);
+        SmartDashboard.getDouble("Rotate I", i);
+        SmartDashboard.getDouble("Rotate D", d);
+        SmartDashboard.getDouble("Rotate angle", angle);
 
         controller = new PIDController(p,i,d,gyro,new PIDOutput(){
             public void pidWrite(double output){
