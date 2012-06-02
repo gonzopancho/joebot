@@ -48,9 +48,9 @@ public class ConveyAutomatic extends CommandBase {
             // Restart ball delay, only after ball exits the top sensor zone
             // Without this check, this algorithm would continuously halt the 
             // ball as it passes through the sensor's line of sight
-            if (!conveyor.curBallAtTop) {
+            /*if (!conveyor.curBallAtTop) {
                 conveyor.startBallDelayTime = -1;
-            }
+            }*/
         }
         else {
             conveyor.stop();

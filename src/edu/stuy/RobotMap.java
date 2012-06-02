@@ -18,16 +18,17 @@ public class RobotMap {
     // public static final int rangefinderModule = 1;
 
     /* USB PORTS */
-    public static final int LEFT_JOYSTICK_PORT = 1;
-    public static final int RIGHT_JOYSTICK_PORT = 2;
+    public static final int LEFT_JOYSTICK_PORT = 2;
+    public static final int RIGHT_JOYSTICK_PORT = 1;
     public static final int SHOOTER_JOYSTICK_PORT = 3;
     public static final int DEBUG_BOX_PORT = 4;
 
     /* PWM OUTPUTS */
-    public static final int FRONT_LEFT_MOTOR = 6;
-    public static final int REAR_LEFT_MOTOR = 7;
-    public static final int FRONT_RIGHT_MOTOR = 2;
-    public static final int REAR_RIGHT_MOTOR = 3;
+    public static final int LEFT_MOTOR = 1;
+    public static final int RIGHT_MOTOR = 3;
+
+    public static final int SHIFTERLEFT_CHANNEL = 5;
+    public static final int SHIFTERRIGHT_CHANNEL = 6;
 
     public static final int ACQUIRER_ROLLER = 5;
     public static final int CONVEYOR_ROLLER = 1;
@@ -49,8 +50,8 @@ public class RobotMap {
      
 
     /* SOLENOID */
-    public static final int GEAR_SHIFT_LOW = 3;
-    public static final int GEAR_SHIFT_HIGH = 4;
+    public static final int GEAR_SHIFT_LOW = 2;
+    public static final int GEAR_SHIFT_HIGH = 3;
     public static final int TUSKS_SOLENOID_RETRACT = 5;
     public static final int TUSKS_SOLENOID_EXTEND = 6;
     public static final int STINGER_SOLENOID_EXTEND = 7;
@@ -63,17 +64,15 @@ public class RobotMap {
 
     /* ANALOG INPUTS */
     public static final int CURRENT_THING_CHANNEL = 2;
-    public static final int GYRO_CHANNEL = 3;
+    public static final int GYRO_CHANNEL = 1;
 
     static {
         for (int i = 0; i < VIRSYS_OUTPUT_MAP.length; i++) {
             VIRSYS_OUTPUT_MAP[i] = -1;
         }
-        VIRSYS_OUTPUT_MAP[FRONT_LEFT_MOTOR] = 0;
-        VIRSYS_OUTPUT_MAP[REAR_LEFT_MOTOR] = 0;
-        VIRSYS_OUTPUT_MAP[FRONT_RIGHT_MOTOR] = 1;
-        VIRSYS_OUTPUT_MAP[REAR_RIGHT_MOTOR] = 1;
-
+        VIRSYS_OUTPUT_MAP[LEFT_MOTOR] = 0;
+        VIRSYS_OUTPUT_MAP[RIGHT_MOTOR] = 1;
+        
         for (int i = 0; i < VIRSYS_INPUT_MAP.length; i++) {
             VIRSYS_INPUT_MAP[i] = 0;
         }

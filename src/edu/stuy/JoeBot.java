@@ -41,9 +41,9 @@ public class JoeBot extends IterativeRobot {
 
         // Initialize all subsystems
         CommandBase.init();
-        if (!Devmode.DEV_MODE) {
+        /*if (!Devmode.DEV_MODE) {
             AxisCamera.getInstance();
-        }
+        }*/
         
         SmartDashboard.putBoolean("SDB auton drive tuning", false);
         SmartDashboard.putDouble("Auton left speed", 0.0);
@@ -70,14 +70,14 @@ public class JoeBot extends IterativeRobot {
     public void autonomousPeriodic() {
         Scheduler.getInstance().run();
         updateSmartDashboard();
-        Conveyor conv = CommandBase.conveyor;
+        //Conveyor conv = CommandBase.conveyor;
         // Has the ball settled at the top?
-        conv.curBallAtTop = CommandBase.conveyor.ballAtTop();
-        if (conv.curBallAtTop && conv.startBallDelayTime < 0) {
-            conv.startBallDelayTime = Timer.getFPGATimestamp();
-        }
-        conv.ballWaitTime = (conv.startBallDelayTime > 0) ? Timer.getFPGATimestamp() - conv.startBallDelayTime : -1;
-        conv.ballSettled = conv.startBallDelayTime < 0 || conv.ballWaitTime > BALL_STATIONARY_TIME;
+        //conv.curBallAtTop = CommandBase.conveyor.ballAtTop();
+        //if (conv.curBallAtTop && conv.startBallDelayTime < 0) {
+        //    conv.startBallDelayTime = Timer.getFPGATimestamp();
+        //}
+        //conv.ballWaitTime = (conv.startBallDelayTime > 0) ? Timer.getFPGATimestamp() - conv.startBallDelayTime : -1;
+        //conv.ballSettled = conv.startBallDelayTime < 0 || conv.ballWaitTime > BALL_STATIONARY_TIME;
 
     }
 
@@ -101,19 +101,20 @@ public class JoeBot extends IterativeRobot {
         updateSmartDashboard();
 
 
-        Conveyor conv = CommandBase.conveyor;
+
+        //Conveyor conv = CommandBase.conveyor;
         // Has the ball settled at the top?
-        conv.curBallAtTop = CommandBase.conveyor.ballAtTop();
-        if (conv.curBallAtTop && conv.startBallDelayTime < 0) conv.startBallDelayTime = Timer.getFPGATimestamp();
-        conv.ballWaitTime = (conv.startBallDelayTime > 0) ? Timer.getFPGATimestamp() - conv.startBallDelayTime : -1;
-        conv.ballSettled = conv.startBallDelayTime < 0 || conv.ballWaitTime > BALL_STATIONARY_TIME;
+        //conv.curBallAtTop = CommandBase.conveyor.ballAtTop();
+        //if (conv.curBallAtTop && conv.startBallDelayTime < 0) conv.startBallDelayTime = Timer.getFPGATimestamp();
+        //conv.ballWaitTime = (conv.startBallDelayTime > 0) ? Timer.getFPGATimestamp() - conv.startBallDelayTime : -1;
+        //conv.ballSettled = conv.startBallDelayTime < 0 || conv.ballWaitTime > BALL_STATIONARY_TIME;
     }
 
     // We use SmartDashboard to monitor bot information.
     // Here, we put things to the SmartDashboard
     private void updateSmartDashboard() {
 
-        SmartDashboard.putDouble("Button Pressed: ", CommandBase.oi.getDistanceButton());
+        /*SmartDashboard.putDouble("Button Pressed: ", CommandBase.oi.getDistanceButton());
         SmartDashboard.putDouble("Distance: ", CommandBase.oi.getDistanceFromDistanceButton());
 
         SmartDashboard.putBoolean("Acquirer In: ", CommandBase.oi.getDigitalValue(OI.ACQUIRER_IN_SWITCH_CHANNEL));
@@ -132,16 +133,16 @@ public class JoeBot extends IterativeRobot {
         SmartDashboard.putBoolean("Upper Conveyor Sensor: ", CommandBase.conveyor.ballAtTop());
         SmartDashboard.putBoolean("Lower Conveyor Sensor: ", CommandBase.conveyor.ballAtBottom());
 
-        SmartDashboard.putDouble("getRPMtop", Flywheel.upperRoller.getRPM());
-        SmartDashboard.putDouble("getRPMbottom", Flywheel.lowerRoller.getRPM());
+        //SmartDashboard.putDouble("getRPMtop", Flywheel.upperRoller.getRPM());
+        //SmartDashboard.putDouble("getRPMbottom", Flywheel.lowerRoller.getRPM());
 
         SmartDashboard.putDouble("Acquirer speed", CommandBase.acquirer.getRollerSpeed());
         
         //SmartDashboard.putBoolean("Pressure switch", CommandBase.drivetrain.compressor.getPressureSwitchValue());
         //SmartDashboard.putDouble("Battery voltage", DriverStation.getInstance().getBatteryVoltage());
 
-        SmartDashboard.putBoolean("Ball settled", CommandBase.conveyor.ballSettled);
-        SmartDashboard.putBoolean("Speed settled", CommandBase.flywheel.isSpeedSettled());
+        //SmartDashboard.putBoolean("Ball settled", CommandBase.conveyor.ballSettled);
+        //SmartDashboard.putBoolean("Speed settled", CommandBase.flywheel.isSpeedSettled());*/
 
     }
 }

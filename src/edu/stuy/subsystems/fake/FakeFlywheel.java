@@ -233,5 +233,9 @@ public class FakeFlywheel extends Subsystem {
     
     public void resetJaguars() {
     }
+
+    public boolean isSpeedSettled(){
+        return true;
+    }
 }
     

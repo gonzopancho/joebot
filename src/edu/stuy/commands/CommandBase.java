@@ -6,6 +6,8 @@ import edu.stuy.subsystems.*;
 import edu.stuy.subsystems.fake.*;
 import edu.wpi.first.wpilibj.command.Command;
 import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
+import edu.wpi.first.wpilibj.Servo;
+import edu.stuy.RobotMap;
 
 /**
  * The base for all commands. All atomic commands should subclass CommandBase.
@@ -20,23 +22,28 @@ public abstract class CommandBase extends Command {
     public static OI oi;
     // Create a single static instance of all of your subsystems
     public static Drivetrain drivetrain;
-    public static Flywheel flywheel;
-    public static Tusks tusks;
-    public static Acquirer acquirer;
-    public static Conveyor conveyor;
-    public static Stinger stinger;
-    public static BallLight ballLight;
+    public static FakeFlywheel flywheel;
+    public static FakeTusks tusks;
+    public static FakeAcquirer acquirer;
+    public static FakeConveyor conveyor;
+    public static FakeStinger stinger;
+    public static FakeBallLight ballLight;
+    public static Servo servLeft;
+    public static Servo servRight;
+
 
     static {
         drivetrain = new Drivetrain();
-        conveyor = new Conveyor();
-        flywheel = new Flywheel();
-        acquirer = new Acquirer();
+        conveyor = new FakeConveyor();
+        flywheel = new FakeFlywheel();
+        acquirer = new FakeAcquirer();
+        servLeft = new Servo(RobotMap.SHIFTERLEFT_CHANNEL);
+        servRight = new Servo(RobotMap.SHIFTERRIGHT_CHANNEL);
         if (!Devmode.DEV_MODE) {
-            tusks = new Tusks();
+            tusks = new FakeTusks();
         }
-        stinger = new Stinger();
-        ballLight = new BallLight();
+        stinger = new FakeStinger();
+        ballLight = new FakeBallLight();
     }
 
     public static void init() {
@@ -58,6 +65,7 @@ public abstract class CommandBase extends Command {
             SmartDashboard.putData(ballLight);
         }
     }
+
 
     public CommandBase(String name) {
         super(name);

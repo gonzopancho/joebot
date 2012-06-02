@@ -11,7 +11,9 @@ import edu.wpi.first.wpilibj.command.Subsystem;
  * @author Danny
  */
 public class FakeConveyor extends Subsystem {
-
+    public boolean ballSettled = true;
+    public boolean curBallAtTop = true;
+    public boolean startBallDelayTime = true;
     // Put methods for controlling this subsystem
     // here. Call these from Commands.
     
@@ -56,4 +58,5 @@ public class FakeConveyor extends Subsystem {
     public double getLowerRoller() {
         return 0;
     }
+
 }

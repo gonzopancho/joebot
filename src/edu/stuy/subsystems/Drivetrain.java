@@ -31,7 +31,7 @@ public class Drivetrain extends Subsystem {
     // Put methods for controlling this subsystem
     // here. Call these from Commands.
     public Drivetrain() {
-        drive = new VictorRobotDrive(RobotMap.FRONT_LEFT_MOTOR, RobotMap.REAR_LEFT_MOTOR, RobotMap.FRONT_RIGHT_MOTOR, RobotMap.REAR_RIGHT_MOTOR);
+        drive = new VictorRobotDrive(RobotMap.LEFT_MOTOR, RobotMap.RIGHT_MOTOR);
         drive.setSafetyEnabled(false);
 
        // In "2nd" cRio slot, or 4th physical
@@ -41,8 +41,8 @@ public class Drivetrain extends Subsystem {
        gyro = new Gyro(RobotMap.GYRO_CHANNEL);
        
        
-        compressor = new Compressor(RobotMap.PRESSURE_SWITCH_CHANNEL, RobotMap.COMPRESSOR_RELAY_CHANNEL);
-        compressor.start();
+        //compressor = new Compressor(RobotMap.PRESSURE_SWITCH_CHANNEL, RobotMap.COMPRESSOR_RELAY_CHANNEL);
+        //compressor.start();
 
         SmartDashboard.getDouble("Rotate P", p);
         SmartDashboard.getDouble("Rotate I", i);

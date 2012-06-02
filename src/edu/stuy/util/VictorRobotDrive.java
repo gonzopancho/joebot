@@ -18,7 +18,11 @@ public class VictorRobotDrive extends RobotDrive {
             int frontRightMotor, int rearRightMotor) {
         super(new Victor(frontLeftMotor), new Victor(rearLeftMotor), new Victor(frontRightMotor), new Victor(rearRightMotor));
     }
-    
+
+    public VictorRobotDrive(int LeftMotor, int RightMotor) {
+        super(new Victor(LeftMotor), new Victor(RightMotor));
+    }
+
     /**
      * Forces RobotDrive to not use CAN.
      * @param leftOutput
